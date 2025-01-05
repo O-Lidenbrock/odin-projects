@@ -8,6 +8,17 @@
 <body>
     <script>
         alert("hello World");
+
+        function getComputerChoice() {
+            num = Math.random()*100
+            const choice = "";
+            if(num < 33) choice = "rock";
+            else if(33 <= num < 66) choice = "scissors";
+            else if(66 <= num < 100) choice = "paper";
+            return choice;
+        }
+
+        
     </script>
 </body>
 </html>
