@@ -7,15 +7,53 @@
 </head>
 <body>
     <script>
-        alert("hello World");
+        //alert("hello World");
 
         function getComputerChoice() {
-            num = Math.random()*100
-            const choice = "";
+            num = Math.random()*100;
+            console.log(num);
+            let choice = "";
             if(num < 33) choice = "rock";
-            else if(33 <= num < 66) choice = "scissors";
-            else if(66 <= num < 100) choice = "paper";
+            else if(33 <= num && num < 66) choice = "scissors";
+            else if(66 <= num && num < 100) choice = "paper";
             return choice;
+        }
+
+        function getHumanChoice() {
+            humanChoice = prompt("enter rock, paper, or scissors");
+            console.log(humanChoice);
+            return humanChoice;
+        }
+
+        
+
+        function playGame() {
+
+            let humanScore = 0;
+            let computerScore = 0;
+
+           function playRound(humanChoice, computerChoice) {
+            hChoice = humanChoice.toLowerCase();
+            cChoice = computerChoice.toLowerCase();
+            if(hChoice == cChoice){
+                console.log("You both played " + cChoice + ". Try again.");
+                playRound(getHumanChoice(), getComputerChoice());
+            }
+            else if(((hChoice == "rock") && (cChoice == "scissors")) || ((hChoice == "paper") && (cChoice == "rock")) || ((hChoice == "scissors") && (cChoice == "paper"))) {
+                console.log("You win! " + humanChoice + "  beats " + computerChoice + ".");
+                humanScore++;
+            }
+            else {console.log("You lose! " + cChoice + " beats " + humanChoice + "."); computerScore++;}
+            }
+
+            playRound(getHumanChoice(), getComputerChoice());
+            playRound(getHumanChoice(), getComputerChoice()); 
+            playRound(getHumanChoice(), getComputerChoice());
+            playRound(getHumanChoice(), getComputerChoice()); 
+            playRound(getHumanChoice(), getComputerChoice());
+
+            console.log("Player: " + humanScore + " Computer: " + computerScore);
+
         }
 
         
